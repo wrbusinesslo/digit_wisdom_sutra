@@ -82,8 +82,10 @@ infra/
 採用「功能導向 + 影響範圍 (Scope)」的命名方式，以利團隊快速識別分支負責的模組。
 
 ### 命名格式
-`<type>/<scope>-<description>`
-
+`<type>/<scope>-<description>`  
+提示：分支命名與 Commit 訊息的格式不同  
+分支 (Branch / Push 使用): feat/worker-audio-hls-pipeline (無空白)  
+提交 (Commit Message 使用): feat(worker): add audio hls pipeline   (使用小括號、冒號與空白，詳見第 3 節)  
 
 ### Type 定義
 - `feat`: 新增功能  
@@ -106,10 +108,27 @@ fix/web-scroll-memory-leak
 chore/infra-rabbitmq-cluster
 ```
 
+---
+## 2. 提交訊息規範 (Commit Message Convention)
 
+嚴格遵循 Conventional Commits 規範，以利後續自動生成 Changelog 並追蹤歷史。
+
+提交格式:
+`<type>(<scope>): <subject>`
+
+提交範例:
+```
+feat(worker): integrate GCP Vision API for image moderation
+
+fix(api): resolve race condition in character lock mechanism
+
+refactor(web): extract sutra grid component for reusability
+
+chore(infra): update docker-compose with minio storage configuration
+```
 ---
 
-## 2. 專案分支架構與開發流程 (Git Flow)
+## 3. 專案分支架構與開發流程 (Git Flow)
 
 針對本微服務架構，採用「簡化版 Git Flow (GitHub Flow 變體)」，兼顧整合測試穩定性與發布效率。
 
