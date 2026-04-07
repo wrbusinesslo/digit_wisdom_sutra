@@ -85,7 +85,7 @@ infra/
 `<type>/<scope>-<description>`  
 提示：分支命名與 Commit 訊息的格式不同  
 分支 (Branch / Push 使用): feat/worker-audio-hls-pipeline (無空白)  
-提交 (Commit Message 使用): feat(worker): add audio hls pipeline   (使用小括號、冒號與空白，詳見第 3 節)  
+提交 (Commit Message 使用): feat(worker): add audio hls pipeline 
 
 ### Type 定義
 - `feat`: 新增功能  
@@ -100,16 +100,8 @@ infra/
 - `worker`: 對應 `backend-worker-python/`  
 - `infra`: 對應 `infra/`  
 
-### 命名範例
-```
-feat/worker-audio-hls-pipeline
-feat/api-redis-distributed-lock
-fix/web-scroll-memory-leak
-chore/infra-rabbitmq-cluster
-```
-
 ---
-## 2. 提交訊息規範 (Commit Message Convention)
+## 提交訊息規範 (Commit Message Convention)
 
 嚴格遵循 Conventional Commits 規範，以利後續自動生成 Changelog 並追蹤歷史。
 
@@ -126,9 +118,17 @@ refactor(web): extract sutra grid component for reusability
 
 chore(infra): update docker-compose with minio storage configuration
 ```
+
+## push 命名範例
+```
+feat/worker-audio-hls-pipeline
+feat/api-redis-distributed-lock
+fix/web-scroll-memory-leak
+chore/infra-rabbitmq-cluster
+```
 ---
 
-## 3. 專案分支架構與開發流程 (Git Flow)
+## 專案分支架構與開發流程 (Git Flow)
 
 針對本微服務架構，採用「簡化版 Git Flow (GitHub Flow 變體)」，兼顧整合測試穩定性與發布效率。
 
