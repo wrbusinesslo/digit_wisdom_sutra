@@ -1,0 +1,17 @@
+# Ignore node modules
+node_modules/
+
+# Ignore Python caches
+__pycache__/
+*.py[cod]
+
+# Ignore Go binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Ignore Docker artifacts
+docker-compose.override.yml
+.env
