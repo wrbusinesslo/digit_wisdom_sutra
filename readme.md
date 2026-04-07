@@ -1,5 +1,5 @@
 # 全民大寫經：專案資料夾結構規劃
-
+![alt text](prototype_infrastructure.png)
 在專案根目錄下，我們將前端、Go 核心 API、Python AI 背景服務與基礎設施 (DevOps) 明確拆分。
 
 ### 根目錄結構 (Root)
