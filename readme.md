@@ -1,4 +1,4 @@
-## 全民大寫經：專案資料夾結構規劃
+# 全民大寫經：專案資料夾結構規劃
 
 在專案根目錄下，我們將前端、Go 核心 API、Python AI 背景服務與基礎設施 (DevOps) 明確拆分。
 
@@ -75,3 +75,88 @@ infra/
     ├── init_schema.sql
     └── seed_data.sql
 ```
+
+# Git Flow
+## 分支命名規範 (Branch Naming Convention)
+
+採用「功能導向 + 影響範圍 (Scope)」的命名方式，以利團隊快速識別分支負責的模組。
+
+### 命名格式
+`<type>/<scope>-<description>`  
+提示：分支命名與 Commit 訊息的格式不同  
+分支 (Branch / Push 使用): feat/worker-audio-hls-pipeline (無空白)  
+提交 (Commit Message 使用): feat(worker): add audio hls pipeline 
+
+### Type 定義
+- `feat`: 新增功能  
+- `fix`: 修復錯誤  
+- `refactor`: 程式碼重構 (不改變既有業務邏輯)  
+- `chore`: 建置過程、輔助工具或環境設定更新  
+- `docs`: 文件修改或更新  
+
+### Scope 定義（嚴格對應專案資料夾結構）
+- `web`: 對應 `frontend/`  
+- `api`: 對應 `backend-api-go/`  
+- `worker`: 對應 `backend-worker-python/`  
+- `infra`: 對應 `infra/`  
+
+---
+## 提交訊息規範 (Commit Message Convention)
+
+嚴格遵循 Conventional Commits 規範，以利後續自動生成 Changelog 並追蹤歷史。
+
+提交格式:
+`<type>(<scope>): <subject>`
+
+提交範例:
+```
+feat(worker): integrate GCP Vision API for image moderation
+
+fix(api): resolve race condition in character lock mechanism
+
+refactor(web): extract sutra grid component for reusability
+
+chore(infra): update docker-compose with minio storage configuration
+```
+
+## push 命名範例
+```
+feat/worker-audio-hls-pipeline
+feat/api-redis-distributed-lock
+fix/web-scroll-memory-leak
+chore/infra-rabbitmq-cluster
+```
+---
+
+## 專案分支架構與開發流程 (Git Flow)
+
+針對本微服務架構，採用「簡化版 Git Flow (GitHub Flow 變體)」，兼顧整合測試穩定性與發布效率。
+
+### 核心分支
+- `main`: 正式環境 (Production)，隨時處於可部署且穩定的狀態  
+- `develop`: 整合測試環境 (Staging)，所有功能分支開發完畢後，先合併至此進行跨模組聯調  
+
+---
+
+### 標準開發流程
+
+### 1️⃣ 同步最新整合分支
+```bash
+git checkout develop
+git pull origin develop
+```
+### 2️⃣ 建立功能分支
+`git checkout -b feat/worker-vision-moderation`
+
+### 3️⃣ 進行開發並提交（遵循 Commit 規範）
+
+### 4️⃣ 推送
+`git push origin feat/worker-vision-moderation`
+
+### 5️⃣ 發起 Pull Request (PR)
+`目標分支：develop`
+
+### 6️⃣ Code Review 通過後合併至 develop
+
+### 7️⃣ 發布流程
+`測試無誤後，由管理者將 develop 合併至 main`
